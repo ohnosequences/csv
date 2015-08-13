@@ -63,4 +63,13 @@ object stuff {
     type PropertySerializers <: AnyTypeSet.Of[AnyPropertySerializer { type To = Format#RV }]
     val PropertySerializers: PropertySerializers
   }
+
+  /*
+    Given that, for m: Map[RK,RV] we want to return Either[Errors, ValueOf[Record]]. How?
+
+    1. Take the first property from our record, and take the first parser for it in `propertyParsers`.
+    2. Parse it, pass around the raw stuff
+
+    This requires _a lot_ of implicits. I'm not that sure.
+  */
 }
